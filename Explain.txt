@@ -1,0 +1,109 @@
+Explanation Of Calculator Code :
+
+FULL DETAILED EXPLANATION 
+
+  (1) // SPDX-License-Identifier: MIT 
+
+ Purpose: 
+This line tells the license for  smart contract (MIT license).
+
+ Why needed? 
+Solidity compiler (0.6.x+) gives warning if no license is mentioned.
+
+
+---------------------------------------------------------------------------
+
+
+  (2) pragma solidity ^0.8.0; 
+
+ Purpose: 
+This tells the required Solidity version.
+
+ ^0.8.0 means: 
+Use  0.8.0 or any version above it  (0.8.x) but  not  0.9.x.
+
+ Why important? 
+Different Solidity versions have different security features.
+
+ Solidity 0.8+ features: 
+✔ Built-in overflow/underflow protection
+✔ Better error messages
+✔ Improved gas optimization
+
+
+---------------------------------------------------------------------------
+
+  (3) contract Calculator {} 
+
+ Purpose: 
+Creates a new Smart Contract named  Calculator .
+
+ Think of it like: 
+A class in OOP → containing functions & data.
+
+
+---------------------------------------------------------------------------
+
+  (4) Function Concepts Used 
+
+ calculator uses  4 simple pure functions .
+
+ 🟦  KEY SOLIDITY CONCEPTS USED 
+
+ ⭐  (A) Function Visibility: public 
+
+Meaning:
+
+> Anyone can call this function
+> From → blockchain, script, frontend, Hardhat console
+
+Solidity has 4 visibility types:
+
+| Visibility | Meaning                            |
+
+| public   | Anyone can call                    |
+| private  | Only inside the same contract      |
+| internal | Contract and its children          |
+| external | Only external calls (not internal) |
+
+ functions are  public  → correct for calculator use.
+
+ ⭐  (B) Function Modifier: pure 
+
+One of  the most important concepts .
+
+ 🔹 What does pure mean?
+
+A pure function:
+
+❌ does NOT read blockchain data
+❌ does NOT write blockchain data
+✔ It only does math/computation
+✔ No storage used
+✔ No state access
+
+Example: add, multiply, etc → pure logic → correct use.
+
+--------------------------------------------------------------------
+
+Q: Why " public pure returns(uint) " , when we already passed parameters with uint type ?
+
+Ans : Parameters uint a, uint b doesnot means that function is pure .
+      because passing parameters doesnot make function pure automatically.
+
+public ?
+
+function can be called from outside .
+
+
+What pure does ?
+
+function will not store anything in blockchain . In this case , Calculator functions will only do math calculations instead of touching blockchain state , if they touch then it will affect on gas rules.
+
+
+returns(uint) ?
+
+expected output of function result . 
+
+
+----------------------------------- End ----------------------------------
